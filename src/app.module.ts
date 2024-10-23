@@ -7,9 +7,7 @@ import { AppService } from './app.service';
 
 @Module({
   imports: [
-    // Load environment variables from .env file
     ConfigModule.forRoot(),
-    // TypeORM configuration for PostgreSQL
     TypeOrmModule.forRoot({
       type: 'postgres',
       host: process.env.DB_HOST || 'localhost',
@@ -18,7 +16,7 @@ import { AppService } from './app.service';
       password: process.env.DB_PASSWORD || 'password',
       database: process.env.DB_NAME || 'colby',
       autoLoadEntities: true,
-      synchronize: true, // Use only in development, disable for production
+      synchronize: true, // Only for development
     }),
   ],
   controllers: [AppController],

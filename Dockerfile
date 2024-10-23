@@ -1,5 +1,5 @@
-# Use the official Node.js image as the base
-FROM node:14
+# Use the official Node.js 16 image as the base
+FROM node:16
 
 # Set the working directory
 WORKDIR /usr/src/app
@@ -21,5 +21,3 @@ EXPOSE 3000
 
 # Run the application
 CMD ["npm", "run", "start:prod"]
-
-#End of Docker file configuration
