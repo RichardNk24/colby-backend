@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
 import Redis from 'ioredis';
+import { HealthModule } from './health/health.module';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { UserModule } from './user/user.module';
@@ -17,6 +18,7 @@ import { UserModule } from './user/user.module';
       synchronize: true, // Only in development, should be disable for production
     }),
     UserModule,
+    HealthModule,
   ],
   controllers: [AppController],
   providers: [
