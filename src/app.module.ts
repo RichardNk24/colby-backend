@@ -8,15 +8,12 @@ import { AppService } from './app.service';
 @Module({
   imports: [
     ConfigModule.forRoot(),
+    // TypeORM configuration using the DATABASE_URL
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: process.env.DB_HOST || 'localhost',
-      port: parseInt(process.env.DB_PORT, 10) || 5432,
-      username: process.env.DB_USERNAME || 'postgres',
-      password: process.env.DB_PASSWORD || 'password',
-      database: process.env.DB_NAME || 'colby',
+      url: process.env.DATABASE_URL, // Using the URL directly
       autoLoadEntities: true,
-      synchronize: true, // Only for development
+      synchronize: true, // Only in development, should be disable for production
     }),
   ],
   controllers: [AppController],
@@ -25,10 +22,7 @@ import { AppService } from './app.service';
     {
       provide: 'REDIS',
       useFactory: () => {
-        return new Redis({
-          host: process.env.REDIS_HOST || 'localhost',
-          port: parseInt(process.env.REDIS_PORT, 10) || 6379,
-        });
+        return new Redis(process.env.REDIS_URL); // Using the Redis URL directly
       },
     },
   ],
