@@ -10,7 +10,7 @@ async function bootstrap() {
 
   // Enable CORS for specific origins
   app.enableCors({
-    origin: ['http://localhost:4200', 'https://yourdomain.com'], // Set allowed origins
+    origin: ['http://localhost:4200', 'https://mydomain.com'], // Set allowed origins
     methods: 'GET,POST,PUT,DELETE,OPTIONS',
     credentials: true,
   });
