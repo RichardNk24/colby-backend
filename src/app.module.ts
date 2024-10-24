@@ -4,6 +4,7 @@ import { ConfigModule } from '@nestjs/config';
 import Redis from 'ioredis';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { UserModule } from './user/user.module';
 
 @Module({
   imports: [
@@ -15,6 +16,7 @@ import { AppService } from './app.service';
       autoLoadEntities: true,
       synchronize: true, // Only in development, should be disable for production
     }),
+    UserModule,
   ],
   controllers: [AppController],
   providers: [
