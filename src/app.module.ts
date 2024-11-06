@@ -8,6 +8,7 @@ import { AppService } from './app.service';
 import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
 import { CollaborationModule } from './collaboration/collaboration.module';
+import { NotificationModule } from './notification/notification.module';
 
 @Module({
   imports: [
@@ -23,6 +24,7 @@ import { CollaborationModule } from './collaboration/collaboration.module';
     HealthModule,
     AuthModule,
     CollaborationModule,
+    NotificationModule,
   ],
   controllers: [AppController],
   providers: [
