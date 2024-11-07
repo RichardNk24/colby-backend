@@ -19,8 +19,10 @@ export class NotificationGateway
   constructor(private readonly notificationService: NotificationService) {}
 
   @SubscribeMessage('sendNotification')
-  handleNotification(@MessageBody() data: { userId: string; message: string }) {
-    const notification = this.notificationService.createNotification(
+  async handleNotification(
+    @MessageBody() data: { userId: string; message: string },
+  ) {
+    const notification = await this.notificationService.createNotification(
       data.userId,
       data.message,
     );
